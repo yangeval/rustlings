@@ -17,7 +17,8 @@ fn vec_map_example(input: &[i32]) -> Vec<i32> {
     // If the input is `[1, 2, 3]`, the output is `[2, 3, 4]`.
     //아름답구만
     // input 매개변수로 들어오는 묶음(슬라이스)
-    // .iter() 
+    // .iter() 반복자 소환 -> 묶음에서 꺼낼 쓸 준비 완료(아직 꺼내지 않음)
+    // 
     input.iter().map(|element| element + 1).collect()
 }
 
