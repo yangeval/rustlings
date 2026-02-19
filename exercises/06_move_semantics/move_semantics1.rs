@@ -1,6 +1,11 @@
 // TODO: Fix the compiler error in this function.
-fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
-    let vec = vec;
+
+// 이 함수를 호출하면,매개변수로 소유권이 넘어간다
+// 불변 상태로 선언되서 -> mut 한 변수로 받아서 처리한다.
+//fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
+fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> {  //매개변수에서 타입을 mut로 선언해도 돼.
+    //let vec = vec;
+    //let mut vec = vec;
 
     vec.push(88);
 
