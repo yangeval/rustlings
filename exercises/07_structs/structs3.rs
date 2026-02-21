@@ -13,6 +13,7 @@ impl Package {
         if weight_in_grams < 10 {
             // This isn't how you should handle errors in Rust, but we will
             // learn about error handling later.
+            //만약 10grams 미만이면, 패닉 처리
             panic!("Can't ship a package with weight below 10 grams");
         }
 
@@ -24,14 +25,18 @@ impl Package {
     }
 
     // TODO: Add the correct return type to the function signature.
-    fn is_international(&self) {
+    // 올바른 반환 타입 설정
+    fn is_international(&self) -> bool {
         // TODO: Read the tests that use this method to find out when a package
         // is considered international.
+        self.sender_country != self.recipient_country
     }
 
     // TODO: Add the correct return type to the function signature.
-    fn get_fees(&self, cents_per_gram: u32) {
+    fn get_fees(&self, cents_per_gram: u32) -> u32 {
         // TODO: Calculate the package's fees.
+        // 그람당 수수료 3rustbucks
+        self.weight_in_grams * cents_per_gram
     }
 }
 
