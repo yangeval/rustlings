@@ -7,6 +7,12 @@ struct Point {
 #[derive(Debug)]
 enum Message {
     // TODO: Define the different variants used below.
+    // 아래 사용한 각기 다른 변수를 정의
+    Resize {width: u32, height: u32},
+    Move(Point),
+    Echo(String),
+    ChangeColor(u8, u8, u8),
+    Quit
 }
 
 impl Message {
