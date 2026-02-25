@@ -7,6 +7,13 @@
 // more than 11 in total - we have a lot of mouths to feed. You are not allowed
 // to insert any more of the fruits that are already in the basket (Apple,
 // Mango, and Lychee).
+//
+// 우리는 맛있는 과일 케이크를 굽기 위해 다양한 과일을 모으고 있습니다. 이를 위해
+// 해시 맵 형태의 바구니를 사용합니다. 키는 우리가 모은 각 과일의 이름을 나타내고,
+// 값은 해당 과일의 개수를 나타냅니다. 사과(4), 망고(2), 리치(5) 세 종류의 과일은
+// 이미 바구니 해시 맵에 들어 있습니다. 각 종류별로 최소 한 개 이상은 있어야 하며,
+// 전체 총합이 11개보다 많아지도록 바구니에 과일을 추가해야 합니다. 먹여 살릴 입이
+// 많거든요! 이미 바구니에 들어 있는 과일(사과, 망고, 리치)은 더 이상 추가할 수 없습니다.
 
 use std::collections::HashMap;
 
@@ -32,6 +39,12 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         // TODO: Insert new fruits if they are not already present in the
         // basket. Note that you are not allowed to put any type of fruit that's
         // already present!
+
+        //let mut basket = HashMap::new();
+        //basket = (Fruit::Apple, 4);
+        let content = [(Fruit::Banana, 4), (Fruit::Pineapple, 2)];
+        HashMap::from_iter(content)
+
     }
 }
 
