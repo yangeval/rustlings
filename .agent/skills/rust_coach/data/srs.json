@@ -1,0 +1,54 @@
+{
+    "srs_version": "1.0",
+    "reviews": [
+        {
+            "id": "basics",
+            "topic": "환경 설정 및 기초 문법 (if, char)",
+            "level": 1,
+            "last_review": "2026-02-18T23:59",
+            "next_review": "2026-02-19T23:59"
+        },
+        {
+            "id": "strings_iter",
+            "topic": "타입 심화 (String vs &str, Iterator)",
+            "level": 1,
+            "last_review": "2026-02-19T23:59",
+            "next_review": "2026-02-20T23:59"
+        },
+        {
+            "id": "ownership",
+            "topic": "소유권 및 이동 시맨틱",
+            "level": 2,
+            "last_review": "2026-02-27T00:30",
+            "next_review": "2026-03-02T00:30"
+        },
+        {
+            "id": "structs_enums",
+            "topic": "구조체 및 열거형 기초/심화",
+            "level": 1,
+            "last_review": "2026-02-22T23:59",
+            "next_review": "2026-02-23T23:59"
+        },
+        {
+            "id": "modules",
+            "topic": "모듈 가시성 및 경로 관리",
+            "level": 1,
+            "last_review": "2026-02-23T23:59",
+            "next_review": "2026-02-24T23:59"
+        },
+        {
+            "id": "hashmaps_basics",
+            "topic": "해시맵 기초 및 테스트 시스템",
+            "level": 1,
+            "last_review": "2026-02-24T23:59",
+            "next_review": "2026-02-25T23:59"
+        },
+        {
+            "id": "hashmaps_advanced",
+            "topic": "해시맵 심화 (Entry API, 지연 평가)",
+            "level": 1,
+            "last_review": "2026-02-27T00:41",
+            "next_review": "2026-02-28T00:41"
+        }
+    ]
+}
