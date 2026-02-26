@@ -5,6 +5,13 @@
 // You have to build a scores table containing the name of the team, the total
 // number of goals the team scored, and the total number of goals the team
 // conceded.
+//
+// 축구 경기 점수 목록이 한 줄에 하나씩 주어집니다. 각 줄은
+// "<팀_1_이름>,<팀_2_이름>,<팀_1_득점>,<팀_2_득점>" 형식입니다.
+// 예시: "England,France,4,2" (잉글랜드 4회 득점, 프랑스 2회 득점).
+//
+// 여러분은 팀 이름, 해당 팀의 총 득점 수, 그리고 해당 팀의 총 실점 수가
+// 포함된 점수 표를 만들어야 합니다.
 
 use std::collections::HashMap;
 
@@ -31,6 +38,16 @@ fn build_scores_table(results: &str) -> HashMap<&str, TeamScores> {
         // Keep in mind that goals scored by team 1 will be the number of goals
         // conceded by team 2. Similarly, goals scored by team 2 will be the
         // number of goals conceded by team 1.
+
+        let team1 = scores.entry(team_1_name).or_default();
+        team1.goals_scored += team_1_score;
+        team1.goals_conceded += team_2_score;
+
+        let team2 = scores.entry(team_2_name).or_default();
+        team2.goals_scored += team_2_score;
+        team2.goals_conceded += team_1_score;
+
+        
     }
 
     scores
@@ -51,7 +68,7 @@ Germany,England,2,1
 England,Spain,1,0";
 
     #[test]
-    fn build_scores() {
+    fn build_scores() { 
         let scores = build_scores_table(RESULTS);
 
         assert!(["England", "France", "Germany", "Italy", "Poland", "Spain"]
@@ -71,6 +88,9 @@ England,Spain,1,0";
     fn validate_team_score_2() {
         let scores = build_scores_table(RESULTS);
         let team = scores.get("Spain").unwrap();
+
+        println!("스페인 득접{:?}", team.goals_scored);
+        println!("스페인 실접{:?}", team.goals_conceded);
         assert_eq!(team.goals_scored, 0);
         assert_eq!(team.goals_conceded, 3);
     }

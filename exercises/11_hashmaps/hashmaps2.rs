@@ -40,11 +40,15 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         // basket. Note that you are not allowed to put any type of fruit that's
         // already present!
 
-        //let mut basket = HashMap::new();
-        //basket = (Fruit::Apple, 4);
-        let content = [(Fruit::Banana, 4), (Fruit::Pineapple, 2)];
-        HashMap::from_iter(content)
+        //basket.entry(fruit).or_insert(5);
 
+        let amount = match fruit {
+            Fruit::Banana => 4,
+            Fruit::Pineapple => 7,
+            _ => 1,
+
+        };
+        basket.entry(fruit).or_insert(amount);
     }
 }
 
