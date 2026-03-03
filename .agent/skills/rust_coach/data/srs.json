@@ -18,9 +18,9 @@
         {
             "id": "ownership",
             "topic": "소유권 및 이동 시맨틱",
-            "level": 2,
-            "last_review": "2026-02-27T00:30",
-            "next_review": "2026-03-02T00:30"
+            "level": 3,
+            "last_review": "2026-03-03T17:01",
+            "next_review": "2026-03-10T17:01"
         },
         {
             "id": "structs_enums",
@@ -46,9 +46,9 @@
         {
             "id": "hashmaps_advanced",
             "topic": "해시맵 심화 (Entry API, 지연 평가)",
-            "level": 1,
-            "last_review": "2026-02-27T00:41",
-            "next_review": "2026-02-28T00:41"
+            "level": 3,
+            "last_review": "2026-03-03T20:02",
+            "next_review": "2026-03-10T20:02"
         }
     ]
 }

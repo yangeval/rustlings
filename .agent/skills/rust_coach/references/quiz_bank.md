@@ -5,13 +5,43 @@
 
 ---
 
+## 해시맵 재도전 & 빌림 검사기 (2026-03-03)
+
+**Q1.** 아래 코드에서 `team_1` 변수가 담고 있는 '값'의 정체는 무엇인가요? 메모리 주소(참조)의 관점에서 설명해보세요.
+```rust
+let team_1 = scores.entry("England").or_default();
+```
+
+**Q2.** 아래 코드에서 `team_1`의 필드를 수정했을 뿐인데, 왜 `scores.insert()`를 다시 호출하지 않아도 `scores` 전체가 업데이트된 상태가 되나요?
+```rust
+let team_1 = scores.entry("England").or_default();
+team_1.goals_scored += 3;
+// scores.insert("England", team_1); <- 왜 이 코드가 필요 없을까요?
+```
+
+**Q3.** 아래 코드는 컴파일 에러가 발생합니다. 왜 한 번에 하나씩만 `entry()`를 통해 가변 참조를 만들 수 있는지, Rust의 '빌림 규칙'과 연결해서 설명해보세요.
+```rust
+let team_1 = scores.entry("England").or_default();
+let team_2 = scores.entry("France").or_default(); // ERROR!
+team_1.goals_scored += 1;
+```
+
+---
+
 ## Default 트레이트 & Entry API 심화 (2026-02-27)
 
-**Q1.** `or_default()`를 사용하려면 구조체 위에 어떤 코드를 써야 하나요? 왜 그런가요?
+**Q1.** 아래와 같이 `or_default()`를 사용해 해시맵 값을 생성하려면 `TeamScores` 구조체에 어떤 트레이트가 구현되어 있어야 할까요?
+```rust
+let score = scores.entry("RedTeam").or_default();
+```
 
-**Q2.** `or_default()`와 `or_insert()`의 결정적인 차이점은 무엇인가요?
+**Q2.** 아래 두 코드의 결정적인 차이점(어떤 값을 넣는가)은 무엇인가요?
+```rust
+scores.entry("A").or_default();
+scores.entry("B").or_insert(TeamScores { goals: 10 });
+```
 
-**Q3.** `entry().or_default()`를 거친 후 반환되는 값의 타입 특성(Reference)은 무엇이며, 왜 편리한가요?
+**Q3.** `entry().or_default()`가 반환하는 값의 정체는 무엇인가요? (값 자체인가요, 아니면 참조인가요?)
 
 ---
 
@@ -26,13 +56,20 @@ println!("{}", s);
 
 **Q2.** `&`와 `&mut`의 차이를 "동시에 몇 명이 쓸 수 있는가"로 설명해보세요.
 
-**Q3.** 함수 인자로 `mut vec: Vec<i32>`와 같이 쓰면 무엇이 달라지나요?
+**Q3.** 함수 인자로 아래와 같이 `mut`을 붙여서 전달받으면 무엇이 가능해지나요?
+```rust
+fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> { ... }
+```
 
 ---
 
 ## 타입 심화 String vs &str (2026-02-19 / 2026-02-23)
 
-**Q1.** 함수 인자를 설계할 때 `String` 대신 `&str`을 쓰면 좋은 이유는?
+**Q1.** 아래 두 함수 중 더 유연하고 권장되는 설계는 무엇인가요? 그 이유는?
+```rust
+fn takes_string(s: String) { ... }
+fn takes_slice(s: &str) { ... }
+```
 
 **Q2.** `to_string()`, `to_owned()`, `String::from()` 세 가지 중 기능적으로 동일한 두 가지는?
 
@@ -46,7 +83,12 @@ println!("{}", s);
 
 **Q2.** `#[derive(Debug)]`와 `{:?}`는 각각 무슨 역할을 하나요?
 
-**Q3.** 구조체 업데이트 구문(`..`)을 쓸 때 소유권 이슈가 생기는 경우는 언제인가요?
+**Q3.** 아래와 같이 구조체 업데이트 구문(`..`)을 쓸 때, `p1`의 소유권 이슈가 생기는 필드는 무엇인가요?
+```rust
+struct Person { name: String, age: u32 }
+let p1 = Person { name: String::from("Kim"), age: 20 };
+let p2 = Person { age: 21, ..p1 };
+```
 
 ---
 
@@ -85,7 +127,10 @@ enum Message { Move { x: i32, y: i32 }, Quit }
 
 **Q1.** `.entry(key).or_default()`에서 `or_default()`가 기본값을 만들려면 구조체에 무엇이 구현되어 있어야 하나요?
 
-**Q2.** Iterator가 "게으른 일꾼"이라고 불리는 이유를 설명해보세요.
+**Q2.** 아래 코드를 실행했을 때 실제로 연산이 일어날까요? Iterator의 '지연 평가' 특성과 연결해 설명해보세요.
+```rust
+let iter = vec![1, 2, 3].iter().map(|x| x + 1);
+```
 
 **Q3.** `next().unwrap().parse::<u8>().unwrap()` 에서 `parse()`가 어떤 타입으로 변환할지 아는 방법은?
 
