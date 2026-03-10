@@ -1,0 +1,7 @@
+{
+    "subject": "rust",
+    "paths": {
+        "srs": ".agent/data/srs.json",
+        "log": "logs.md"
+    }
+}

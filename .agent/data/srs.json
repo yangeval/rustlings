@@ -1,12 +1,12 @@
 {
-    "srs_version": "1.0",
+    "srs_version": "2.0",
     "reviews": [
         {
             "id": "basics",
             "topic": "환경 설정 및 기초 문법 (if, char)",
-            "level": 1,
-            "last_review": "2026-02-18T23:59",
-            "next_review": "2026-02-19T23:59"
+            "level": 2,
+            "last_review": "2026-03-07T19:53",
+            "next_review": "2026-03-10T19:53"
         },
         {
             "id": "strings_iter",
@@ -18,9 +18,9 @@
         {
             "id": "ownership",
             "topic": "소유권 및 이동 시맨틱",
-            "level": 3,
-            "last_review": "2026-03-03T17:01",
-            "next_review": "2026-03-10T17:01"
+            "level": 4,
+            "last_review": "2026-03-07T18:51",
+            "next_review": "2026-03-21T18:51"
         },
         {
             "id": "structs_enums",
@@ -46,9 +46,9 @@
         {
             "id": "hashmaps_advanced",
             "topic": "해시맵 심화 (Entry API, 지연 평가)",
-            "level": 3,
-            "last_review": "2026-03-03T20:02",
-            "next_review": "2026-03-10T20:02"
+            "level": 4,
+            "last_review": "2026-03-07T18:51",
+            "next_review": "2026-03-21T18:51"
         }
     ]
 }
